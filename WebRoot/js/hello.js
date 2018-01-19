@@ -1,5 +1,6 @@
 Vue.component("channel-list", {
-	template : "<li>这是渠道列表</li>"
+	props : ["user"],
+	template : "<li>{{user.name}}-{{user.age}}</li>"
 });
 
 var hello = new Vue({

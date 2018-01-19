@@ -14,7 +14,7 @@
 		<div>{{name}}</div>
 		<button v-on:click="changeName">更改名字</button>
 		<input v-model="name">
-		<ol><channel-list></channel-list></ol>
+		<ul><channel-list v-for="user in users" v-bind:user="user"></channel-list></ul>
 	</div>
 </body>
 </html>
