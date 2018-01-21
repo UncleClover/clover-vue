@@ -25,9 +25,13 @@ var hello = new Vue({
 	el : "#hello",
 	data : {
 		message : "hello",
+		rawHtml : "<span style='color:red'>我是谁？</span>",
 		users : users,
 		name : clover,
-		sex : sex
+		sex : sex,
+		show : true,
+		hide : false,
+		baidu : "http://www.baidu.com"
 	},
 	methods : {
 		changeName : function() {
@@ -35,6 +39,9 @@ var hello = new Vue({
 		},
 		changeSex : function(){
 			this.sex = ["boy", "girl"];
+		},
+		reverseMessageMethod : function(){
+			return this.message.split("").reverse().join("") + Date.now();
 		}
 	},
 	created : function(){
@@ -42,6 +49,11 @@ var hello = new Vue({
 	},
 	updated : function(){
 		console.log("sex is " + this.sex);
+	},
+	computed : {
+		reverseMessage : function(){
+			return this.message.split("").reverse().join("") + Date.now();
+		}
 	}
 });
 

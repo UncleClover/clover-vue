@@ -8,18 +8,23 @@
 		<div v-if="message == 'hello'" v-bind:title="message">
 			<div>1.获取数据信息</div>
 			{{message}}
-			
+			<br/>{{rawHtml}}<span v-html="rawHtml"></span>
 			<div>2.v-for获取数据信息</div>
 			<ul>
 				<li v-for="user in users">{{user.name}}-{{user.age}}</li>
 			</ul>
 		</div>
-		<div>{{name.name}}</div>
+		<div v-once>{{name.name}}</div>
 		<button id="changeName" @click="changeName">更改名字</button>
 		<input v-model="name.name">
-		<ul><channel-list v-for="user in users" v-bind:user="user"></channel-list></ul>
+		<ul><channel-list v-for="user in users" v-bind:user="user" v-bind:key="user.name"></channel-list></ul>
 		<div>性别：{{sex[0]}}</div>
 		<button id="changeSex" @click="changeSex">更改性别</button>
+		<div v-if="show">这个内容可以看到！vue不能看到的内容不会在页面渲染</div>
+		<div v-if="hide">这个内容不能被看到~</div>
+		<div><a :href="baidu" target="_blank">百度一下</a></div>
+		<div>计算属性-缓存：{{reverseMessage}}</div>
+		<div>方法：{{reverseMessageMethod()}}</div>
 	</div>
 </body>
 </html>
