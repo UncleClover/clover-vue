@@ -31,7 +31,17 @@ var hello = new Vue({
 		sex : sex,
 		show : true,
 		hide : false,
-		baidu : "http://www.baidu.com"
+		baidu : "http://www.baidu.com",
+		firstName : "zhang",
+		lastName : "dq",
+		question : "",
+		answer : "请填写问题~"
+	},
+	watch : {
+		question : function(newValue, oldValue){
+			this.answer = "正在输入答案……";
+			this.getAnswer();
+		}
 	},
 	methods : {
 		changeName : function() {
@@ -42,7 +52,20 @@ var hello = new Vue({
 		},
 		reverseMessageMethod : function(){
 			return this.message.split("").reverse().join("") + Date.now();
-		}
+		},
+		getAnswer : _.debounce(function(){
+			if(this.question.indexOf("?") === -1 && this.question.indexOf("？") === -1){
+				this.answer = "请以问号结尾！";
+				return;
+			}
+			this.answert = "获取答案中~请耐心等待~";
+			var _this = this;
+			axios.get("https://yesno.wtf/api").then(function(response){
+				_this.answer = _.capitalize(response.data.answer);
+			}).catch(function(error){
+				_this.answer = error;
+			});
+		}, 500)
 	},
 	created : function(){
 		console.log(this.message);
@@ -53,6 +76,14 @@ var hello = new Vue({
 	computed : {
 		reverseMessage : function(){
 			return this.message.split("").reverse().join("") + Date.now();
+		},
+		fullName : {
+			get : function(){return this.firstName + " " + this.lastName;},
+			set : function(newValue){
+				var names = newValue.split(" ");
+				this.firstName = names[0];
+				this.lastName = names[1];
+			}
 		}
 	}
 });

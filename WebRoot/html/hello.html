@@ -11,7 +11,7 @@
 			<br/>{{rawHtml}}<span v-html="rawHtml"></span>
 			<div>2.v-for获取数据信息</div>
 			<ul>
-				<li v-for="user in users">{{user.name}}-{{user.age}}</li>
+				<li v-for="(user, index) in users">{{message}}-{{index}}-{{user.name}}-{{user.age}}</li>
 			</ul>
 		</div>
 		<div v-once>{{name.name}}</div>
@@ -25,8 +25,15 @@
 		<div><a :href="baidu" target="_blank">百度一下</a></div>
 		<div>计算属性-缓存：{{reverseMessage}}</div>
 		<div>方法：{{reverseMessageMethod()}}</div>
+		<div>setter方法测试：{{fullName}}</div>
+		<div>
+			<p><input v-model="question"></p>
+			<p>The answer is : {{answer}}</p>
+		</div>
 	</div>
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 <script src="../js/vue.dev.js"></script>
 <script src="../js/hello.js"></script>
