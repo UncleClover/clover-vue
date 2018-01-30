@@ -35,7 +35,8 @@ var hello = new Vue({
 		firstName : "zhang",
 		lastName : "dq",
 		question : "",
-		answer : "请填写问题~"
+		answer : "请填写问题~",
+		counter : 0
 	},
 	watch : {
 		question : function(newValue, oldValue){
@@ -65,7 +66,20 @@ var hello = new Vue({
 			}).catch(function(error){
 				_this.answer = error;
 			});
-		}, 500)
+		}, 500),
+		greet : function(message){
+			if(message){
+				alert("Hello, " + message + "!");
+			}else{
+				alert("FUCK!!!");
+			}
+		},
+		preventDefault : function($event){
+			if($event){
+				$event.preventDefault();
+			}
+			alert("hello");
+		}
 	},
 	created : function(){
 		console.log(this.message);

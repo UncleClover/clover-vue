@@ -17,12 +17,13 @@
 		<div v-once>{{name.name}}</div>
 		<button id="changeName" @click="changeName">更改名字</button>
 		<input v-model="name.name">
+		<div v-for="(value, key, index) in name">{{index}}-{{key}}-{{value}}</div>
 		<ul><channel-list v-for="user in users" v-bind:user="user" v-bind:key="user.name"></channel-list></ul>
 		<div>性别：{{sex[0]}}</div>
 		<button id="changeSex" @click="changeSex">更改性别</button>
 		<div v-if="show">这个内容可以看到！vue不能看到的内容不会在页面渲染</div>
 		<div v-if="hide">这个内容不能被看到~</div>
-		<div><a :href="baidu" target="_blank">百度一下</a></div>
+		<div><a :href="baidu" target="_blank" @click="preventDefault($event)">百度一下</a></div>
 		<div>计算属性-缓存：{{reverseMessage}}</div>
 		<div>方法：{{reverseMessageMethod()}}</div>
 		<div>setter方法测试：{{fullName}}</div>
@@ -30,6 +31,10 @@
 			<p><input v-model="question"></p>
 			<p>The answer is : {{answer}}</p>
 		</div>
+		<h1>事件处理</h1>
+		<button @click="counter += 1">点击加1</button>
+		<p>点击次数：{{counter}}</p>
+		<button @click="greet">打个招呼吧~</button>
 	</div>
 </body>
 </html>
