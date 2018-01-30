@@ -6,27 +6,28 @@
 <body>
 	<div id="outerMost" style="border: 1px solid black; width: 150px; height: 120px; padding: 20px;">
 		outerMost
-		<p id="middle" style="border: 1px solid black; width: 60px; height: 60px; padding: 20px;">
+		<p id="middle" onclick="alert('middel');" style="border: 1px solid black; width: 60px; height: 60px; padding: 20px;">
 			 Middle
-			<a href="" id="innerMost" style="border: 1px solid black; width: 30px; height: 20px; display: block; margin: 20px;">click</a>
+			<a href="" id="innerMost" onclick="alert(11);" style="border: 1px solid black; width: 30px; height: 20px; display: block; margin: 20px;">click</a>
 		</p>
 	</div>
 </body>
 </html>
 <script>
-	var outerElement = document.getElementById('outerMost');
-	var middleElement = document.getElementById('middle');
-	var innerElement = document.getElementById('innerMost');
+	// var outerElement = document.getElementById('outerMost');
+	// var middleElement = document.getElementById('middle');
+	// var innerElement = document.getElementById('innerMost');
 	
-	outerElement.addEventListener('click', function () {
-	    console.log('trigger outermost div');
-	}, false);
-	middleElement.addEventListener('click', function () {
-	    console.log('trigger middle div');
-	}, false);
-	innerElement.addEventListener('click', function (e) {
-		e.preventDefault();
-		e.stopPropagation();
-	    console.log('trigger innermost button');
-	}, false);
+	// outerElement.addEventListener('click', function () {
+	//     console.log('trigger outermost div');
+	// }, false);
+	// middleElement.addEventListener('click', function () {
+	//     console.log('trigger middle div');
+	// }, false);
+	
+	// innerElement.addEventListener('click', function (e) {
+	// 	e.preventDefault();
+	// 	e.stopPropagation();
+	//     console.log('trigger innermost button');
+	// }, false);
 </script>
