@@ -35,6 +35,17 @@
 		<button @click="counter += 1">点击加1</button>
 		<p>点击次数：{{counter}}</p>
 		<button @click="greet">打个招呼吧~</button>
+		<h1>事件修饰符(.stop;.prevent;.capture;.self;.once;)</h1>
+		<h2>.stop、.self和.prevent</h2>
+		<div @click.self="divStopTest"><a :href="baidu" @click.prevent.stop="aStopTest" target="_blank">aStopTest</a></div>
+		<div @click.self="divStopTest" style="border:1px solid blue"><a :href="baidu" @click="aStopTest" target="_blank" style="border:1px solid red">aStopTest</a></div>
+		<div @click.prevent.self="divStopTest" style="border:1px solid blue"><a :href="baidu" style="border:1px solid red">@click.prevent.self</a></div>
+		<div @click.self.prevent="divStopTest" style="border:1px solid blue"><a :href="baidu" style="border:1px solid red">@click.self.prevent</a></div>
+		<h2>.capture</h2>
+		<div><a :href="baidu" @click.capture="captureTest"  target="_blank">capture测试</a></div>
+		<h2>.self</h2>
+		<h2>.once</h2>
+		<a href="javascript:void(0);" @click.once="onceOnly">只能点击一次</a>
 	</div>
 </body>
 </html>

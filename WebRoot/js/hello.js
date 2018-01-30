@@ -79,6 +79,18 @@ var hello = new Vue({
 				$event.preventDefault();
 			}
 			alert("hello");
+		},
+		onceOnly : function(){
+			alert("我只能被点击一次~你打我啊");
+		},
+		divStopTest : function(){
+			alert("我被点击~divStopTest");
+		},
+		aStopTest : function(){
+			alert("这个点击是正确的~");
+		},
+		captureTest : function(){
+			alert("我要跳转到百度了~不要拦我");
 		}
 	},
 	created : function(){
