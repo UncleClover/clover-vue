@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>@click.self.prevent和@click.prevent.click</title>
+</head>
+<body>
+	<div id="event">
+		<div @click="div1" style="border:1px solid red;">
+			<a @click.self.prevent="selfPrevent()" href="https://cn.vuejs.org/v2/guide/events.html" target="_blank">
+				a
+				<div @click="div11">div</div>
+			</a>
+		</div>
+		<div @click="div2" style="border:1px solid red;">
+			<a @click.prevent.self="preventSelf()" href="https://www.baidu.com" target="_blank">
+				@click.prevent.self-阻止所有点击
+				<div @click="div11">div</div>
+			</a>
+		</div>
+	</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+<script src="../js/vue.dev.js"></script>
+<script>
+	var event = new Vue({
+		el : "#event",
+		data : {},
+		methods : {
+			selfPrevent : function(){
+				console.log("@click.self.prevent-阻止所有的点击");
+			},
+			preventSelf : function(){
+				console.log("@click.prevent.self-阻止自身点击");
+			},
+			div1 : function(){
+				console.log("我是第一个DIV标签");
+			},
+			div11 : function(){
+				console.log("div11");
+			},
+			div2 : function(){
+				console.log("我是第二个DIV标签");
+			}
+		}
+	});
+</script>
