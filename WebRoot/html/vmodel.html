@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+	<div id="vmodel">
+		<input type="text" v-model="name">{{name}}<br/>
+		<textarea v-model="desc"></textarea>{{desc}}<br/>
+		<input type="checkbox" id="checkbox" v-model="checked"><label for="checkbox">{{checked}}</label><br/>
+		
+		<input type="checkbox" id="tiger" value="tiger" v-model="animals"><label for="tiger">tiger</label><br/>
+		<input type="checkbox" id="monkey" value="monkey" v-model="animals"><label for="monkey">monkey</label><br/>
+		<input type="checkbox" id="dog" value="dog" v-model="animals"><label for="dog">dog</label><br/>
+		{{animals}}
+		<br/><br/>
+		<input type="radio" id="boy" value="boy" v-model="sex"><label for="boy">boy</label><br/>
+		<input type="radio" id="girl" value="girl" v-model="sex"><label for="girl">girl</label><br/>
+		{{sex}}
+	</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+<script src="../js/vue.dev.js"></script>
+<script>
+	var vmodel = new Vue({
+		el : "#vmodel",
+		data : {
+			name : "zhangdq",
+			desc : "我是一个程序员",
+			checked : false,
+			animals : [],
+			sex : []
+		}
+	});
+</script>
