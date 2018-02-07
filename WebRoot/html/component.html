@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="component">
+		<person-desc></person-desc>
+		<name_el></name_el>
+		<simple_counter></simple_counter>
+		<simple_counter></simple_counter>
+		<simple_counter></simple_counter>
+	</div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+<script src="../js/vue.dev.js"></script>
+<script>
+	//组件
+	Vue.component("person-desc",{
+		template : "<div>曾梦想仗剑走天涯</div>"
+	});
+	
+	var name_el = {template : "<div>zhangdq</div>"};
+	var data = {counter : 0}
+	var simple_counter = {
+			template : "<button @click='counter += 1'>{{counter}}</button>",
+			data : function(){
+				return {counter : 0};
+			}
+	};
+	var component = new Vue({
+		el : "#component",
+		data : {
+			counter : 0
+		},
+		components : {
+			"name_el" : name_el,
+			"simple_counter" : simple_counter
+		}
+	});
+</script>
