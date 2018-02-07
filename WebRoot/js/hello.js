@@ -91,6 +91,18 @@ var hello = new Vue({
 		},
 		captureTest : function(){
 			alert("我要跳转到百度了~不要拦我");
+		},
+		onScroll : function(){
+			console.log("滚动测试");
+		},
+		ok : function(){
+			alert("Ok");
+		},
+		notok : function(){
+			alert("not ok");
+		},
+		del : function(){
+			console.log("正在删除内容~");
 		}
 	},
 	created : function(){
