@@ -4,13 +4,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+	table,table tr th, table tr td { border:1px solid #0094ff; }
+    table { width: 200px; min-height: 25px; line-height: 25px; text-align: center; border-collapse: collapse;}   
+</style>
 <body>
-	<div id="component">
+	<div id="component" style="line-height:30px;">
 		<person-desc></person-desc>
 		<name_el></name_el>
 		<simple_counter></simple_counter>
 		<simple_counter></simple_counter>
 		<simple_counter></simple_counter>
+		<table>
+			<tr><td>名字</td><td>地址</td><td>年龄</td></tr>
+			<tr is="trTemplate"></tr>
+		</table>
+		<input v-model="tips">
+		<message :message="tips"></message>
 	</div>
 </body>
 </html>
@@ -31,14 +41,36 @@
 				return {counter : 0};
 			}
 	};
+	var userTemplate = {
+			template : "<tr><td>{{name}}</td><td>{{addr}}</td><td>{{age}}</td></tr>",
+			data : function(){
+				return {"name" : "zhangq", "addr" : "河南郑州", "age" : 28};
+				       /* {"name" : "clover", "addr" : "河南淮阳", "age" : 38},
+				        {"name" : "如来", "addr" : "灵山", "age" : 18},
+				        {"name" : "孙悟空", "addr" : "花果山", "age" : 1200},
+				        {"name" : "猪八戒", "addr" : "高老庄", "age" : 6800},
+				        {"name" : "唐僧", "addr" : "中土大唐", "age" : 23},
+				        {"name" : "沙僧", "addr" : "流沙河", "age" : 423},
+				        {"name" : "鸣人", "addr" : "河南郑州", "age" : 18},
+				        {"name" : "佐助", "addr" : "河南郑州", "age" : 18},
+				        {"name" : "鼬", "addr" : "北京", "age" : 26}];*/
+			}
+	};
+	var messageTemplate = {
+		props : ["message"],
+		template : "<div>{{message}}</div>"
+	};
 	var component = new Vue({
 		el : "#component",
 		data : {
-			counter : 0
+			counter : 0,
+			tips : "hello"
 		},
 		components : {
 			"name_el" : name_el,
-			"simple_counter" : simple_counter
+			"simple_counter" : simple_counter,
+			"trTemplate" : userTemplate,
+			"message" : messageTemplate 
 		}
 	});
 </script>
