@@ -57,8 +57,21 @@
 			}
 	};
 	var messageTemplate = {
-		props : ["message"],
-		template : "<div>{{message}}</div>"
+		props : {
+			"message" : {
+				type : String
+			}
+		},
+		template : "<div>{{message_}}-{{upper}}</div>",
+		data : function(){
+			// message更改时模板内的message_值不会发生改变
+			return {message_ : this.message};
+		},
+		computed : {
+			upper : function(){
+				return this.message.toUpperCase();
+			}
+		}
 	};
 	var component = new Vue({
 		el : "#component",
