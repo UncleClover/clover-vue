@@ -10,7 +10,10 @@
 </style>
 <body>
 	<div id="component" style="line-height:30px;">
-		<person-desc></person-desc>
+		<person-desc>
+			<p>哈哈</p>
+			<p slot="footer" slot-scope="props">{{props.text}}-底部内容填充~</p>
+		</person-desc>
 		<name_el></name_el>
 		<simple_counter></simple_counter>
 		<simple_counter></simple_counter>
@@ -34,7 +37,7 @@
 <script>
 	//组件
 	Vue.component("person-desc",{
-		template : "<div>曾梦想仗剑走天涯</div>"
+		template : "<div>曾梦想仗剑走天涯<slot><p>这是一个备份内容！</p></slot><footer><slot name='footer' text='fuck the world'>底部插槽</slot></footer></div>"
 	});
 	
 	var name_el = {template : "<div>zhangdq</div>"};
