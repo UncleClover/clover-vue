@@ -29,6 +29,8 @@
 		<btn_counter v-on:increment="countTotal"></btn_counter>
 		<btn_counter v-on:increment="countTotal"></btn_counter>
 		<btn_counter v-on:increment="countTotal"></btn_counter>
+		
+		<keep-alive><component v-bind:is="tips"></component></keep-alive>
 	</div>
 </body>
 </html>
@@ -102,7 +104,7 @@
 		el : "#component",
 		data : {
 			counter : 0,
-			tips : "hello"
+			tips : "name_el"
 		},
 		methods : {
 			"countTotal" : function(){
